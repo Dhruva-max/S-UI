@@ -39,46 +39,60 @@ export function Header() {
   return (
     <header className="border-b-[3px] border-black">
       <div className="mx-auto flex h-16 max-w-4xl items-center justify-between px-4 sm:px-8">
-        <Link href="/" className="flex items-center">
-          <span className="text-lg font-semibold sm:text-xl">
+        <Link href="/" className="flex items-center gap-2">
+          <span className="text-2xl">🇮🇳</span>
+          <span className="text-lg font-bold sm:text-xl">
             <span className="text-black transition-colors duration-200 hover:text-gray-600">
-              Git
+              Intern
             </span>
             <span className="text-purple-600 transition-colors duration-200 hover:text-purple-500">
-              Diagram
+              Setu
             </span>
           </span>
         </Link>
-        <nav className="flex items-center gap-3 sm:gap-6">
-          <span
-            onClick={() => setIsApiKeyDialogOpen(true)}
-            className="cursor-pointer text-sm font-medium text-black transition-transform hover:translate-y-[-2px] hover:text-purple-600"
-          >
-            <span className="flex items-center sm:hidden">
-              <span>API Key</span>
-            </span>
-            <span className="hidden items-center gap-1 sm:flex">
-              <span>API Key</span>
-            </span>
-          </span>
-          <span
-            onClick={() => setIsPrivateReposDialogOpen(true)}
-            className="cursor-pointer text-sm font-medium text-black transition-transform hover:translate-y-[-2px] hover:text-purple-600"
-          >
-            <span className="sm:hidden">Private Repos</span>
-            <span className="hidden sm:inline">Private Repos</span>
-          </span>
+        <nav className="flex items-center gap-2 sm:gap-4">
+          {/* Language Toggle */}
+          <div className="hidden items-center gap-1 text-xs font-medium text-black sm:flex">
+            <span className="cursor-pointer hover:text-purple-600">EN</span>
+            <span className="text-gray-400">|</span>
+            <span className="cursor-pointer hover:text-purple-600">हिंदी</span>
+            <span className="text-gray-400">|</span>
+            <span className="cursor-pointer hover:text-purple-600">தமிழ்</span>
+          </div>
+          
           <Link
-            href="https://github.com/ahmedkhaleel2004/gitdiagram"
-            className="flex items-center gap-1 text-sm font-medium text-black transition-transform hover:translate-y-[-2px] hover:text-purple-600 sm:gap-2"
+            href="/intern-setu/explore"
+            className="text-sm font-medium text-black transition-transform hover:translate-y-[-2px] hover:text-purple-600"
           >
-            <FaGithub className="h-5 w-5" />
-            <span className="hidden sm:inline">GitHub</span>
+            <span className="sm:hidden">Students</span>
+            <span className="hidden sm:inline">For Students</span>
           </Link>
-          <span className="flex items-center gap-1 text-sm font-medium text-black">
-            <span className="text-amber-400">★</span>
-            {formatStarCount(starCount)}
-          </span>
+          <Link
+            href="/intern-setu/organizations"
+            className="text-sm font-medium text-black transition-transform hover:translate-y-[-2px] hover:text-purple-600"
+          >
+            <span className="sm:hidden">Orgs</span>
+            <span className="hidden sm:inline">For Organizations</span>
+          </Link>
+          <Link
+            href="/intern-setu/success-stories"
+            className="text-sm font-medium text-black transition-transform hover:translate-y-[-2px] hover:text-purple-600"
+          >
+            <span className="sm:hidden">Stories</span>
+            <span className="hidden sm:inline">Success Stories</span>
+          </Link>
+          <Link
+            href="/intern-setu/help"
+            className="flex items-center gap-1 text-sm font-medium text-black transition-transform hover:translate-y-[-2px] hover:text-purple-600"
+          >
+            <span>Help</span>
+          </Link>
+          
+          {/* Help Desk Info */}
+          <div className="hidden items-center gap-1 text-xs font-medium text-black lg:flex">
+            <span className="text-green-600">●</span>
+            <span>1800-XXX-XXXX</span>
+          </div>
         </nav>
 
         <PrivateReposDialog

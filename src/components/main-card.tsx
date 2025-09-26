@@ -65,6 +65,12 @@ export default function MainCard({
     e.preventDefault();
     setError("");
 
+    // If on homepage, redirect to intern-setu application
+    if (isHome) {
+      router.push('/intern-setu');
+      return;
+    }
+
     const githubUrlPattern =
       /^https?:\/\/github\.com\/([a-zA-Z0-9-_]+)\/([a-zA-Z0-9-_\.]+)\/?$/;
     const match = githubUrlPattern.exec(repoUrl.trim());
@@ -96,21 +102,32 @@ export default function MainCard({
   return (
     <Card className="relative w-full max-w-3xl border-[3px] border-black bg-purple-200 p-4 shadow-[8px_8px_0_0_#000000] sm:p-8">
       <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-        <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-          <Input
-            placeholder="https://github.com/username/repo"
-            className="flex-1 rounded-md border-[3px] border-black px-3 py-4 text-base font-bold shadow-[4px_4px_0_0_#000000] placeholder:text-base placeholder:font-normal placeholder:text-gray-700 sm:px-4 sm:py-6 sm:text-lg sm:placeholder:text-lg"
-            value={repoUrl}
-            onChange={(e) => setRepoUrl(e.target.value)}
-            required
-          />
-          <Button
-            type="submit"
-            className="border-[3px] border-black bg-purple-400 p-4 px-4 text-base text-black shadow-[4px_4px_0_0_#000000] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 hover:transform hover:bg-purple-400 sm:p-6 sm:px-6 sm:text-lg"
-          >
-            Diagram
-          </Button>
-        </div>
+        {isHome ? (
+          <div className="flex justify-center">
+            <Button
+              type="submit"
+              className="border-[3px] border-black bg-purple-400 p-6 px-8 text-lg text-black shadow-[4px_4px_0_0_#000000] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 hover:transform hover:bg-purple-400"
+            >
+              Find My Government Internship
+            </Button>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+            <Input
+              placeholder="https://github.com/username/repo"
+              className="flex-1 rounded-md border-[3px] border-black px-3 py-4 text-base font-bold shadow-[4px_4px_0_0_#000000] placeholder:text-base placeholder:font-normal placeholder:text-gray-700 sm:px-4 sm:py-6 sm:text-lg sm:placeholder:text-lg"
+              value={repoUrl}
+              onChange={(e) => setRepoUrl(e.target.value)}
+              required
+            />
+            <Button
+              type="submit"
+              className="border-[3px] border-black bg-purple-400 p-4 px-4 text-base text-black shadow-[4px_4px_0_0_#000000] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 hover:transform hover:bg-purple-400 sm:p-6 sm:px-6 sm:text-lg"
+            >
+              Diagram
+            </Button>
+          </div>
+        )}
 
         {error && <p className="text-sm text-red-600">{error}</p>}
 
@@ -211,23 +228,55 @@ export default function MainCard({
           </div>
         )}
 
-        {/* Example Repositories */}
+        {/* Government Ministry Categories */}
         {isHome && (
-          <div className="space-y-2">
-            <div className="text-sm text-gray-700 sm:text-base">
-              Try these example repositories:
+          <div className="space-y-3">
+            <div className="text-sm font-medium text-gray-800 sm:text-base">
+              Explore Opportunities By:
             </div>
-            <div className="flex flex-wrap gap-2">
-              {Object.entries(exampleRepos).map(([name, path]) => (
-                <Button
-                  key={name}
-                  variant="outline"
-                  className="border-2 border-black bg-purple-400 text-sm text-black transition-transform hover:-translate-y-0.5 hover:transform hover:bg-purple-300 sm:text-base"
-                  onClick={(e) => handleExampleClick(path, e)}
-                >
-                  {name}
-                </Button>
-              ))}
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+              <Button
+                variant="outline"
+                className="border-2 border-black bg-blue-200 text-sm text-black transition-transform hover:-translate-y-0.5 hover:transform hover:bg-blue-300 sm:text-base"
+                onClick={(e) => { e.preventDefault(); router.push('/intern-setu/explore?ministry=niti-aayog'); }}
+              >
+                NITI Aayog
+              </Button>
+              <Button
+                variant="outline"
+                className="border-2 border-black bg-green-200 text-sm text-black transition-transform hover:-translate-y-0.5 hover:transform hover:bg-green-300 sm:text-base"
+                onClick={(e) => { e.preventDefault(); router.push('/intern-setu/explore?ministry=digital-india'); }}
+              >
+                Digital India
+              </Button>
+              <Button
+                variant="outline"
+                className="border-2 border-black bg-orange-200 text-sm text-black transition-transform hover:-translate-y-0.5 hover:transform hover:bg-orange-300 sm:text-base"
+                onClick={(e) => { e.preventDefault(); router.push('/intern-setu/explore?ministry=smart-cities'); }}
+              >
+                Smart Cities
+              </Button>
+              <Button
+                variant="outline"
+                className="border-2 border-black bg-purple-200 text-sm text-black transition-transform hover:-translate-y-0.5 hover:transform hover:bg-purple-300 sm:text-base"
+                onClick={(e) => { e.preventDefault(); router.push('/intern-setu/explore?ministry=finance'); }}
+              >
+                Finance Ministry
+              </Button>
+              <Button
+                variant="outline"
+                className="border-2 border-black bg-red-200 text-sm text-black transition-transform hover:-translate-y-0.5 hover:transform hover:bg-red-300 sm:text-base"
+                onClick={(e) => { e.preventDefault(); router.push('/intern-setu/explore?ministry=health'); }}
+              >
+                Health Ministry
+              </Button>
+              <Button
+                variant="outline"
+                className="border-2 border-black bg-yellow-200 text-sm text-black transition-transform hover:-translate-y-0.5 hover:transform hover:bg-yellow-300 sm:text-base"
+                onClick={(e) => { e.preventDefault(); router.push('/intern-setu/explore?ministry=all'); }}
+              >
+                View All
+              </Button>
             </div>
           </div>
         )}
