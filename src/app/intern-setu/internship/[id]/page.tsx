@@ -1,11 +1,13 @@
 "use client";
 
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { MapPin, Clock, Briefcase, ArrowLeft, CheckCircle, Building, Users, GraduationCap, Share2, BookmarkPlus } from 'lucide-react';
 import { Button } from '~/components/ui/button';
 
-export default async function InternshipDetailsPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+export default function InternshipDetailsPage() {
+  const params = useParams<{ id: string }>();
+  const id = params?.id || '';
   
   // Mock data for the internship details
   const internship = {

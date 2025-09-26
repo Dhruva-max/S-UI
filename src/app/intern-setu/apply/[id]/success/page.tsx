@@ -1,11 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { CheckCircle, Calendar, Mail, Phone, MapPin, ArrowRight, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
-export default function ApplicationSuccessPage({ params }: { params: { id: string } }) {
+export default function ApplicationSuccessPage() {
+  const params = useParams<{ id: string }>();
+  const id = params?.id || '';
   const [showConfetti, setShowConfetti] = useState(true);
 
   useEffect(() => {

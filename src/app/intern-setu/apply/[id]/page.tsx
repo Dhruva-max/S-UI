@@ -4,10 +4,12 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Upload, FileText, User, Mail, Phone, MapPin, Calendar, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 
-export default function ApplyPage({ params }: { params: { id: string } }) {
+export default function InternshipApplicationPage() {
   const router = useRouter();
+  const params = useParams<{ id: string }>();
+  const id = params?.id || '';
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -27,7 +29,7 @@ export default function ApplyPage({ params }: { params: { id: string } }) {
 
   // Mock internship data
   const internship = {
-    id: params.id,
+    id: id,
     title: "Frontend Developer Intern",
     company: "TechCorp",
     companyLogo: "TC",
@@ -84,7 +86,7 @@ export default function ApplyPage({ params }: { params: { id: string } }) {
 
   const handleSubmit = () => {
     if (canSubmit()) {
-      router.push(`/intern-setu/apply/${params.id}/success`);
+      router.push(`/intern-setu/apply/${id}/success`);
     }
   };
 
@@ -100,7 +102,7 @@ export default function ApplyPage({ params }: { params: { id: string } }) {
       <header className="bg-white/80 backdrop-blur-sm border-b border-purple-100 sticky top-0 z-10 p-4">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
           <Link 
-            href={`/intern-setu/internship/${params.id}`}
+            href={`/intern-setu/internship/${id}`}
             className="flex items-center gap-2 text-purple-600 hover:text-purple-700 transition-colors"
           >
             <ArrowLeft size={20} />
