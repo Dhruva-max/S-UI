@@ -1,90 +1,54 @@
-import "~/styles/globals.css";
+import type { Metadata } from "next";
+import { Inter, Sora } from "next/font/google";
+import "./globals.css";
 
-import { GeistSans } from "geist/font/sans";
-import { type Metadata } from "next";
-import { Header } from "~/components/header";
-import { Footer } from "~/components/footer";
-import { CSPostHogProvider } from "./providers";
-import { Toaster } from "~/components/ui/sonner";
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
+  weight: ["400", "600", "700", "800"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "GitDiagram",
-  description:
-    "Turn any GitHub repository into an interactive diagram for visualization in seconds.",
-  metadataBase: new URL("https://gitdiagram.com"),
-  keywords: [
-    "github",
-    "git diagram",
-    "git diagram generator",
-    "git diagram tool",
-    "git diagram maker",
-    "git diagram creator",
-    "git diagram",
-    "diagram",
-    "repository",
-    "visualization",
-    "code structure",
-    "system design",
-    "software architecture",
-    "software design",
-    "software engineering",
-    "software development",
-    "software architecture",
-    "software design",
-    "software engineering",
-    "software development",
-    "open source",
-    "open source software",
-    "ahmedkhaleel2004",
-    "ahmed khaleel",
-    "gitdiagram",
-    "gitdiagram.com",
-  ],
-  authors: [
-    { name: "Ahmed Khaleel", url: "https://github.com/ahmedkhaleel2004" },
-  ],
-  creator: "Ahmed Khaleel",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://gitdiagram.com",
-    title: "GitDiagram - Repository to Diagram in Seconds",
-    description:
-      "Turn any GitHub repository into an interactive diagram for visualization.",
-    siteName: "GitDiagram",
-    images: [
-      {
-        url: "/og-image.png", // You'll need to create this image
-        width: 1200,
-        height: 630,
-        alt: "GitDiagram - Repository Visualization Tool",
-      },
-    ],
+  title: "Intern-Setu - Government Internships",
+  description: "AI-powered platform to find perfect government internships",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Intern-Setu",
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-snippet": -1,
-    },
-  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: "cover",
+  themeColor: "#2E6CF6",
+  minimumScale: 1,
+  shrinkToFit: "no",
+  interactive: true
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <CSPostHogProvider>
-        <body className="flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-          <Toaster />
-        </body>
-      </CSPostHogProvider>
+    <html lang="en" className={`${inter.variable} ${sora.variable}`}>
+      <body className="font-inter bg-app-background text-foreground min-h-screen overflow-x-hidden">
+        <div className="min-h-screen w-full max-w-[390px] mx-auto relative bg-grid-pattern">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
