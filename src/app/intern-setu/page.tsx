@@ -152,7 +152,7 @@ export default function LoginPage() {
             className="mt-4 text-center"
           >
             <Link href="/intern-setu/signup" className="text-sm text-purple-600 hover:underline hover:text-purple-700 transition-colors">
-              Don't have an account? Sign Up
+              Don&apos;t have an account? Sign Up
             </Link>
           </motion.div>
         </div>

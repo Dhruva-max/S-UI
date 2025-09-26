@@ -160,7 +160,7 @@ export default function RecommendationsPage() {
                 <Briefcase className="h-12 w-12 text-gray-400" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">No matches found</h3>
-              <p className="text-gray-600 mb-4">Let's refine your profile to find better matches!</p>
+              <p className="text-gray-600 mb-4">Let&apos;s refine your profile to find better matches!</p>
               <Link href="/intern-setu/onboarding">
                 <button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border border-black shadow-[4px_4px_0_0_#000000] hover:shadow-[6px_6px_0_0_#000000] px-6 py-2 rounded-md font-medium transition-all">
                   Update Profile

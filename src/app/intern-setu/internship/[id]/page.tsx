@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { MapPin, Clock, Briefcase, ArrowLeft, CheckCircle, Building, Users, GraduationCap, Share2, BookmarkPlus } from 'lucide-react';
+import { MapPin, Clock, Briefcase, ArrowLeft, CheckCircle, Share2, BookmarkPlus } from 'lucide-react';
 import { Button } from '~/components/ui/button';
 
 export default function InternshipDetailsPage() {
@@ -213,7 +213,7 @@ export default function InternshipDetailsPage() {
         
         {/* Match Explanation */}
         <div className="bg-white rounded-lg shadow-md p-4 mb-4">
-          <h2 className="text-lg font-bold mb-3">Why You're a Good Fit</h2>
+          <h2 className="text-lg font-bold mb-3">Why You&apos;re a Good Fit</h2>
           
           <div className="space-y-3">
             <div>

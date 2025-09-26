@@ -157,7 +157,7 @@ export default function DashboardPage() {
             Welcome back, {userData.name}! 👋
           </h2>
           <p className="text-gray-600">
-            Here's what's happening with your internship applications
+            Here&apos;s what&apos;s happening with your internship applications
           </p>
         </motion.div>
 

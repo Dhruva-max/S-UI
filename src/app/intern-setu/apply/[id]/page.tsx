@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Upload, FileText, User, Mail, Phone, MapPin, Calendar, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Upload, FileText, User, Mail, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter, useParams } from 'next/navigation';
 
@@ -65,13 +65,13 @@ export default function InternshipApplicationPage() {
     e.stopPropagation();
     setDragActive(false);
     
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+    if (e.dataTransfer.files?.[0]) {
       handleFileUpload(e.dataTransfer.files[0]);
     }
   };
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
+    if (e.target.files?.[0]) {
       handleFileUpload(e.target.files[0]);
     }
   };

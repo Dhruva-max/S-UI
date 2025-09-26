@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Search, Filter, MapPin, Clock, Briefcase, CheckCircle, ArrowLeft, Heart, Bookmark, Share, Building, Users, Star } from 'lucide-react';
+import { Search, MapPin, Clock, Briefcase, ArrowLeft, Star, Bookmark, Users } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ExploreInternsPage() {

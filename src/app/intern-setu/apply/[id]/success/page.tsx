@@ -7,8 +7,6 @@ import { CheckCircle, Calendar, Mail, Phone, MapPin, ArrowRight, Sparkles } from
 import Link from 'next/link';
 
 export default function ApplicationSuccessPage() {
-  const params = useParams<{ id: string }>();
-  const id = params?.id || '';
   const [showConfetti, setShowConfetti] = useState(true);
 
   useEffect(() => {
