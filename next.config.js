@@ -7,12 +7,15 @@ import "./src/env.js";
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: false,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  // Only disable strict checking in development or when explicitly requested
+  ...(process.env.NODE_ENV !== 'production' || process.env.DEV_RELAX_LINT === 'true' ? {
+    eslint: {
+      ignoreDuringBuilds: true,
+    },
+    typescript: {
+      ignoreBuildErrors: true,
+    },
+  } : {}),
   async rewrites() {
     return [
       {

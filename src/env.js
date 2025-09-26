@@ -44,3 +44,8 @@ export const env = createEnv({
    */
   emptyStringAsUndefined: true,
 });
+
+// Post-validation guard: fail fast if no database configuration is provided
+if (!env.POSTGRES_URL && !env.DATABASE_URL) {
+  throw new Error("Missing DB config: set POSTGRES_URL or DATABASE_URL");
+}

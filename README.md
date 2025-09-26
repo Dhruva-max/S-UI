@@ -64,7 +64,16 @@ pnpm i
 cp .env.example .env
 ```
 
-Then edit the `.env` file with your Anthropic API key and optional GitHub personal access token.
+Then edit the `.env` file with your database configuration and API keys:
+
+**Required Environment Variables:**
+- `POSTGRES_URL` or `DATABASE_URL` - Database connection string (at least one is required)
+
+**Optional Environment Variables:**
+- `DEV_RELAX_LINT` - Set to `true` to disable ESLint and TypeScript checking during builds (development only)
+- GitHub personal access token for private repositories (if needed)
+
+**Note:** In production builds, ESLint and TypeScript errors will fail the build unless `DEV_RELAX_LINT=true` is explicitly set.
 
 4. Run backend
 

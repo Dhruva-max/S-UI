@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Enable strict error handling: exit on error, undefined variables, and pipe failures
+set -euo pipefail
+
 # InternSetu Local Development & Deployment Script
 
 echo "🇮🇳 InternSetu - Government Internships Made Simple"
@@ -20,12 +23,18 @@ fi
 
 if ! command_exists pnpm; then 
     echo "❌ pnpm is not installed. Installing pnpm..."
-    npm install -g pnpm
+    if ! npm install -g pnpm; then
+        echo "❌ Failed to install pnpm globally. Please check your npm permissions or install manually."
+        exit 1
+    fi
 fi
 
 # Install dependencies
 echo "📦 Installing dependencies..."
-pnpm install
+if ! pnpm install; then
+    echo "❌ Failed to install dependencies. Please check the error above and try again."
+    exit 1
+fi
 
 # Environment setup
 if [ ! -f .env ]; then
